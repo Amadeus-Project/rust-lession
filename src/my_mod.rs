@@ -1,26 +1,36 @@
-pub fn print_upper(){
-    for ch in 'A'..='Z'{
-        print!("{ch}");
+
+pub fn to_ascii(i: &i32) -> String {
+    match *i {
+        x@0..=127 => format!("{:?}", x as u8 as char),
+        _ => "".into(),
     }
 }
 
-pub fn print_lower(){
-    for ch in 'a'..='z'{
-        print!("{ch}");
+// a - Z
+pub fn print_ascii(){
+    println!("a-Z");
+    let mut x = 97;
+    loop {
+        print!("{} ", to_ascii(&x));
+        x -= 1;
+        if x == 89 {
+            break;
+        }
     }
-}
-pub fn print(){
-    print_lower();
-    print_upper();
-    println!()
+    println!();
 }
 
 pub mod inner_mod {
-    use crate::my_mod::{print_lower, print_upper};
-    pub fn print(){
-        print_upper();
-        print_lower();
-        println!()
+    use crate::my_mod::{to_ascii};
+    // A - z
+    pub fn print_ascii(){
+        println!("A-z");
+        for x in 65..= 122{
+            print!("{} ", to_ascii(&x));
+        }
+        println!();
     }
+
+
 }
 
