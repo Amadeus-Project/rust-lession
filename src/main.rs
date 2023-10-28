@@ -1,10 +1,10 @@
-mod my_mod;
+mod mod_inner;
+mod mod_outer;
 
-use my_mod as one;
-use  my_mod::inner_mod as two;
 fn main() {
+
     // a - Z
-    one::print_ascii();
+    mod_outer::print_ascii();
     // A - z
-    two::print_ascii();
+    mod_inner::print_ascii();
 }
